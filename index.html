@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-CSS-Javascript Editor</title>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/01e6e77457.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="title-container">
+        <h1>HTML, CSS, and JavaScript Editor</h1>
+    </div>
+
+    <div class="container">
+        <div class="top">
+            <label><i class="fa-brands fa-html5"></i> HTML</label>
+            <textarea id="html_code" onkeyup="run()"></textarea>
+            <label><i class="fa-brands fa-css3-alt"></i> CSS</label>
+            <textarea id="css_code" onkeyup="run()"></textarea>
+            <label><i class="fa-brands fa-js"></i> JavaScript</label>
+            <textarea id="js_code" onkeyup="run()"></textarea>
+        </div>
+        <div class="bottom">
+            <label><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function run(){
+            let html = document.getElementById("html_code").value;
+            let css = document.getElementById("css_code").value;
+            let javascript = document.getElementById("js_code").value;
+            let output = document.getElementById("output");
+
+            output.contentDocument.body.innerHTML = html + "<style>" + css + "</style>";
+            output.contentWindow.eval(javascript);
+        }
+    </script>
+
+</body>
+</html>
